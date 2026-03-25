@@ -13,40 +13,28 @@
     <body>
         <div class="min-h-screen">
             <div class="flex min-h-screen">
-                <aside class="w-72 shrink-0 bg-white/10 text-white border-r border-white/10">
-                    <div class="px-5 py-5 flex items-center gap-3">
-                        <img src="/legacy/panel/logo.jpg" alt="Copiservi" class="h-10 w-auto rounded" onerror="this.style.display='none'">
-                        <div>
-                            <div class="font-bold leading-tight">COPISERVI</div>
-                            <div class="text-xs text-white/80">Panel</div>
-                        </div>
+                <aside class="w-56 md:w-60 shrink-0 bg-white/10 text-white border-r border-white/10">
+                    <div class="px-3 py-4">
+                        <img
+                            src="/legacy/panel/logo.jpg"
+                            alt="Copiservi"
+                            class="w-full h-10 object-contain"
+                            onerror="this.style.display='none'"
+                        >
                     </div>
 
-                    <nav class="px-3 pb-6 text-sm">
+                    <nav class="px-2 pb-6 text-sm">
                         <a href="{{ route('panel.dashboard') }}"
                            class="block rounded-lg px-3 py-2 hover:bg-white/10 {{ request()->routeIs('panel.dashboard') ? 'bg-white/10' : '' }}">
                             Dashboard
                         </a>
 
-                        <button
-                            type="button"
-                            class="mt-2 w-full flex items-center justify-between rounded-lg px-3 py-2 hover:bg-white/10"
-                            data-panel-menu-toggle="gestion"
-                            aria-expanded="true"
-                        >
-                            <span>Gestión</span>
-                            <span class="text-white/70" data-panel-menu-icon="gestion">▾</span>
-                        </button>
-                        <div class="pl-3" data-panel-menu="gestion">
-                            <a href="{{ route('panel.clientes') }}"
-                               class="block rounded-lg px-3 py-2 hover:bg-white/10 {{ request()->routeIs('panel.clientes') ? 'bg-white/10' : '' }}">
-                                Clientes
-                            </a>
-                            <a href="{{ route('panel.registro') }}"
-                               class="block rounded-lg px-3 py-2 hover:bg-white/10 {{ request()->routeIs('panel.registro') ? 'bg-white/10' : '' }}">
-                                Registro
-                            </a>
-                        </div>
+                        <a href="{{ route('panel.clientes') }}"
+                           class="mt-2 block rounded-lg px-3 py-2 hover:bg-white/10 {{ request()->routeIs('panel.clientes') ? 'bg-white/10' : '' }}">
+                            Clientes
+                        </a>
+
+                        {{-- Registro oculto en menú (no eliminado) --}}
 
                         <div class="mt-4 border-t border-white/10 pt-4">
                             <form method="POST" action="{{ route('panel.logout') }}">
@@ -55,8 +43,8 @@
                                     Salir
                                 </button>
                             </form>
-                            <a href="{{ route('home') }}" class="block rounded-lg px-3 py-2 hover:bg-white/10 text-white/90">
-                                Volver a la web
+                            <a href="https://copiservi.com/" target="_blank" rel="noopener noreferrer" class="block rounded-lg px-3 py-2 hover:bg-white/10 text-white/90">
+                                Ir a la web
                             </a>
                         </div>
                     </nav>
@@ -70,22 +58,7 @@
             </div>
         </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll('[data-panel-menu-toggle]').forEach((btn) => {
-                    btn.addEventListener('click', () => {
-                        const key = btn.getAttribute('data-panel-menu-toggle');
-                        const menu = document.querySelector(`[data-panel-menu="${key}"]`);
-                        const icon = document.querySelector(`[data-panel-menu-icon="${key}"]`);
-                        if (!menu) return;
-
-                        const isHidden = menu.classList.toggle('hidden');
-                        btn.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
-                        if (icon) icon.textContent = isHidden ? '▸' : '▾';
-                    });
-                });
-            });
-        </script>
+        {{-- sin menú desplegable --}}
     </body>
 </html>
 

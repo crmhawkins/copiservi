@@ -1,14 +1,12 @@
 <div data-panel="copiservi">
-    <div class="flex items-center justify-between gap-4 text-white">
-        <div>
+    <div class="mt-0 flex flex-col items-center gap-6">
+        <div class="max-w-3xl w-full text-white">
             <div class="text-2xl font-bold">Dashboard</div>
             <div class="text-xs text-white/80">
-                {{ $admin ? "Admin: {$admin->usuario}" : 'Panel' }}
+                {{ $admin ? "Usuario: {$admin->usuario}" : 'Panel' }}
             </div>
         </div>
-    </div>
-
-    <div class="mt-6 copi-card p-6 max-w-3xl">
+    <div class="copi-card p-6 max-w-3xl w-full">
         <div class="flex items-center justify-center">
             <img src="/legacy/panel/logo.jpg" alt="Copiservi" class="h-14 w-auto" onerror="this.style.display='none'">
         </div>
@@ -32,13 +30,14 @@
             @foreach ($bonos as $bono)
                 <button
                     type="button"
-                    class="rounded-lg bg-[color:var(--color-copiservi-muted)] px-4 py-2 text-white font-semibold"
+                    class="copi-bono-btn rounded-lg px-4 py-2 font-semibold"
                     data-bono="{{ $bono }}"
                 >
                     CARGAR BONO {{ $bono }}
                 </button>
             @endforeach
         </div>
+    </div>
     </div>
 </div>
 

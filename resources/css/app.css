@@ -62,4 +62,32 @@
     #green { background-color: #008F00; }
     #orange { background-color: #ff9900; }
     #red { background-color: #ff0000; }
+
+    /* Select: blanco cuando está cerrado, opciones negras al desplegar */
+    .copi-select {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.10);
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .copi-select option,
+    .copi-select optgroup {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    .copi-btn {
+        cursor: pointer;
+    }
+
+    .copi-bono-btn {
+        background-color: var(--color-copiservi-muted);
+        color: #ffffff;
+        transition: background-color 150ms ease-in-out;
+        cursor: pointer;
+    }
+
+    .copi-bono-btn:hover {
+        background-color: var(--color-copiservi-blue);
+    }
 }

@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'public.home')->name('home');
-Route::view('/servicios', 'public.servicios')->name('servicios');
-Route::view('/perfil', 'public.perfil')->name('perfil');
-Route::view('/contactar', 'public.contactar')->name('contactar');
+Route::get('/', function () {
+    if (session()->has('panel_admin_id')) {
+        return redirect()->route('panel.dashboard');
+    }
+
+    return redirect()->route('panel.login');
+})->name('home');
 
 Route::prefix('panel')->group(function () {
     // Compatibilidad URLs antiguas (/panel/login.php, /panel/index.php, etc.)
@@ -22,6 +25,8 @@ Route::prefix('panel')->group(function () {
         Route::post('/copias', [\App\Http\Controllers\Panel\CopiasController::class, 'hacerCopias'])->name('panel.copias');
         Route::post('/bono', [\App\Http\Controllers\Panel\CopiasController::class, 'cargarBono'])->name('panel.bono');
         Route::get('/registro', [\App\Http\Controllers\Panel\RegistroController::class, 'index'])->name('panel.registro');
+        Route::post('/registro/borrar', [\App\Http\Controllers\Panel\RegistroController::class, 'destroySelected'])->name('panel.registro.borrar');
         Route::get('/clientes', [\App\Http\Controllers\Panel\ClientesController::class, 'index'])->name('panel.clientes');
+        Route::post('/clientes/borrar', [\App\Http\Controllers\Panel\ClientesController::class, 'destroySelected'])->name('panel.clientes.borrar');
     });
 });

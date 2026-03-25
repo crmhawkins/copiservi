@@ -60,7 +60,7 @@
                 </form>
 
                 <div class="mt-4 text-center text-xs text-gray-500">
-                    <a class="underline underline-offset-4" href="{{ route('home') }}">Volver a la web</a>
+                    <a class="underline underline-offset-4" href="https://copiservi.com/" target="_blank" rel="noopener noreferrer">Ir a la web</a>
                 </div>
             </div>
         </div>

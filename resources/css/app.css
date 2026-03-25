@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-copiservi-purple: #2e119c;
+    --color-copiservi-blue: #000099;
+    --color-copiservi-muted: #666699;
+    --color-copiservi-muted-light: #CCCCFF;
+
+    --font-copiservi-serif: 'Century Schoolbook', 'Georgia', 'Times New Roman', serif;
+}
+
+@layer base {
+    body {
+        background: var(--color-copiservi-purple);
+        color: white;
+    }
+}
+
+@layer components {
+    .copi-shell {
+        @apply min-h-screen;
+        background-image: url('/legacy/imagenes/fondo_sin_letras.jpg');
+        background-repeat: repeat;
+        background-position: top left;
+    }
+
+    .copi-card {
+        @apply bg-white text-black shadow-lg rounded-xl border border-white/20;
+    }
+
+    .copi-title {
+        font-family: var(--font-copiservi-serif);
+        color: var(--color-copiservi-blue);
+    }
+
+    .copi-text {
+        font-family: var(--font-copiservi-serif);
+        color: var(--color-copiservi-blue);
+    }
+
+    #green, #orange, #red {
+        height: 66px;
+        padding: 3px 2px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 32pt;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
+
+    #green { background-color: #008F00; }
+    #orange { background-color: #ff9900; }
+    #red { background-color: #ff0000; }
+}

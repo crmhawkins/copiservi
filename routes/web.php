@@ -8,6 +8,10 @@ Route::view('/perfil', 'public.perfil')->name('perfil');
 Route::view('/contactar', 'public.contactar')->name('contactar');
 
 Route::prefix('panel')->group(function () {
+    // Compatibilidad URLs antiguas (/panel/login.php, /panel/index.php, etc.)
+    Route::redirect('/login.php', '/panel/login', 302);
+    Route::redirect('/index.php', '/panel', 302);
+
     Route::get('/login', [\App\Http\Controllers\Panel\AuthController::class, 'showLogin'])->name('panel.login');
     Route::post('/login', [\App\Http\Controllers\Panel\AuthController::class, 'login'])->name('panel.login.post');
     Route::post('/logout', [\App\Http\Controllers\Panel\AuthController::class, 'logout'])->name('panel.logout');
@@ -18,5 +22,6 @@ Route::prefix('panel')->group(function () {
         Route::post('/copias', [\App\Http\Controllers\Panel\CopiasController::class, 'hacerCopias'])->name('panel.copias');
         Route::post('/bono', [\App\Http\Controllers\Panel\CopiasController::class, 'cargarBono'])->name('panel.bono');
         Route::get('/registro', [\App\Http\Controllers\Panel\RegistroController::class, 'index'])->name('panel.registro');
+        Route::get('/clientes', [\App\Http\Controllers\Panel\ClientesController::class, 'index'])->name('panel.clientes');
     });
 });

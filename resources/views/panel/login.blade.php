@@ -12,12 +12,15 @@
     </head>
     <body>
         <div class="min-h-screen flex items-center justify-center px-4">
-            <div class="w-full max-w-md copi-card p-6">
+            <div class="w-full max-w-lg copi-card p-8 md:p-10">
                 <div class="flex items-center justify-center">
-                    <img src="/legacy/panel/logo.jpg" alt="Copiservi" class="h-16 w-auto" onerror="this.style.display='none'">
+                    <img src="/legacy/panel/logo.jpg" alt="Copiservi" class="h-20 w-auto" onerror="this.style.display='none'">
                 </div>
 
-                <h1 class="copi-title text-center text-2xl font-bold mt-4">Acceso al panel</h1>
+                <h1 class="copi-title text-center text-3xl font-bold mt-5">Acceso al panel</h1>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Introduce tus credenciales para acceder a la gestión.
+                </p>
 
                 @if ($errors->any())
                     <div class="mt-4 rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-800">
@@ -25,20 +28,34 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('panel.login.post') }}" class="mt-6 space-y-4">
+                <form method="POST" action="{{ route('panel.login.post') }}" class="mt-8 space-y-5">
                     @csrf
                     <div>
                         <label class="block text-sm font-semibold text-gray-700">Usuario</label>
-                        <input name="usuario" value="{{ old('usuario') }}" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2" autocomplete="username" required>
+                        <input
+                            name="usuario"
+                            value="{{ old('usuario') }}"
+                            class="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-[color:var(--color-copiservi-muted-light)]"
+                            autocomplete="username"
+                            required
+                        >
                     </div>
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700">Contraseña</label>
-                        <input type="password" name="password" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2" autocomplete="current-password" required>
+                        <input
+                            type="password"
+                            name="password"
+                            class="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-[color:var(--color-copiservi-muted-light)]"
+                            autocomplete="current-password"
+                            required
+                        >
                     </div>
 
-                    <button class="w-full rounded-lg bg-[color:var(--color-copiservi-blue)] px-4 py-2 text-white font-semibold">
-                        Entrar
+                    <button
+                        class="w-full rounded-xl bg-[color:var(--color-copiservi-blue)] px-5 py-3 text-white font-bold text-lg shadow-md hover:brightness-110 active:brightness-95 transition"
+                    >
+                        Acceder
                     </button>
                 </form>
 

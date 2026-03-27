@@ -26,11 +26,11 @@
             <div class="mt-2 text-xs text-gray-500">Al cambiar el valor, se descuenta del saldo.</div>
         </div>
 
-        <div class="mt-6 flex flex-wrap gap-3">
+        <div class="mt-6 flex flex-nowrap gap-2">
             @foreach ($bonos as $bono)
                 <button
                     type="button"
-                    class="copi-bono-btn rounded-lg px-4 py-2 font-semibold"
+                    class="copi-bono-btn flex-1 rounded-lg px-2.5 py-2 text-xs font-semibold whitespace-nowrap"
                     data-bono="{{ $bono }}"
                 >
                     CARGAR BONO {{ $bono }}

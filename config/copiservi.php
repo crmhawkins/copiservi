@@ -12,10 +12,12 @@ return [
     ],
 
     // En el proyecto viejo se leía de panel/bono*.txt. Aquí lo configuramos por ENV.
+    // Bonos solicitados: 400, 250, 545 y 1200.
     'bonos' => array_values(array_filter([
         env('COPISERVI_BONO_1', 400),
-        env('COPISERVI_BONO_2'),
-        env('COPISERVI_BONO_3'),
+        env('COPISERVI_BONO_2', 250),
+        env('COPISERVI_BONO_3', 545),
+        env('COPISERVI_BONO_4', 1200),
     ], fn ($v) => $v !== null && $v !== '')),
 ];
 

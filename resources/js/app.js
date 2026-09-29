@@ -46,8 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
     usuarioInput.focus();
   }
 
+  async function crearUsuario() {
+    if (!usuarioInput?.value) return;
+    if (!confirm(`¿Dar de alta el número operativo ${usuarioInput.value}?`)) return;
+    output.innerHTML = '<div class="text-sm text-white/80">Dando de alta…</div>';
+    output.innerHTML = await postHtml('/panel/usuarios', { usuario: usuarioInput.value });
+    usuarioInput.focus();
+  }
+
   usuarioInput?.addEventListener('change', comprobar);
   copiasInput?.addEventListener('change', hacerCopias);
+  output?.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'crear-usuario-btn') {
+      e.preventDefault();
+      crearUsuario();
+    }
+  });
 
   document.querySelectorAll('[data-bono]').forEach((btn) => {
     btn.addEventListener('click', (e) => {

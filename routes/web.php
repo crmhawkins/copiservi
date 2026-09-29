@@ -24,6 +24,7 @@ Route::prefix('panel')->group(function () {
         Route::post('/comprobar', [\App\Http\Controllers\Panel\CopiasController::class, 'comprobar'])->name('panel.comprobar');
         Route::post('/copias', [\App\Http\Controllers\Panel\CopiasController::class, 'hacerCopias'])->name('panel.copias');
         Route::post('/bono', [\App\Http\Controllers\Panel\CopiasController::class, 'cargarBono'])->name('panel.bono');
+        Route::post('/usuarios', [\App\Http\Controllers\Panel\CopiasController::class, 'crear'])->name('panel.usuarios.crear');
         Route::get('/registro', [\App\Http\Controllers\Panel\RegistroController::class, 'index'])->name('panel.registro');
         Route::post('/registro/borrar', [\App\Http\Controllers\Panel\RegistroController::class, 'destroySelected'])->name('panel.registro.borrar');
         Route::get('/clientes', [\App\Http\Controllers\Panel\ClientesController::class, 'index'])->name('panel.clientes');

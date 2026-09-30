@@ -36,7 +36,7 @@ class CopiasController extends Controller
         $numero = trim($data['usuario']);
 
         if (Usuario::query()->where('usuario', $numero)->exists()) {
-            return response('<div class="text-sm text-white/90">Ese número operativo ya existe, no se puede duplicar.</div>', 200);
+            return response('<div class="text-sm text-gray-700">Ese número operativo ya existe, no se puede duplicar.</div>', 200);
         }
 
         try {
@@ -46,7 +46,7 @@ class CopiasController extends Controller
                 'ingreso' => Carbon::now()->toDateString(),
             ]);
         } catch (QueryException $e) {
-            return response('<div class="text-sm text-white/90">Ese número operativo ya existe, no se puede duplicar.</div>', 200);
+            return response('<div class="text-sm text-gray-700">Ese número operativo ya existe, no se puede duplicar.</div>', 200);
         }
 
         Registro::create([
@@ -114,8 +114,8 @@ class CopiasController extends Controller
 
     private function renderNoExisteHtml(): string
     {
-        return '<div class="text-sm text-white/90">El usuario elegido no existe.</div>'
-            .'<button type="button" id="crear-usuario-btn" class="copi-btn mt-2 rounded-lg border border-white/70 bg-white/10 px-4 py-2 text-white font-semibold hover:bg-blue-700 transition-colors">'
+        return '<div class="text-sm text-gray-700">El usuario elegido no existe.</div>'
+            .'<button type="button" id="crear-usuario-btn" class="copi-bono-btn mt-2 rounded-lg px-4 py-2 font-semibold">'
             .'Dar de alta como nuevo número operativo</button>';
     }
 
